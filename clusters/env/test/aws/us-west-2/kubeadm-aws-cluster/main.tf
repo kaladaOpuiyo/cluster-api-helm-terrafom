@@ -1,7 +1,7 @@
 data "aws_region" "current" {}
 
 module "kubeadm_aws_cluster" {
-  source = "../../../modules/charts/kubeadm-aws-cluster"
+  source = "../../../../../modules/charts/kubeadm-aws-cluster"
 
   bastion_host_enabled            = var.bastion_host_enabled
   cluster_name                    = var.cluster_name

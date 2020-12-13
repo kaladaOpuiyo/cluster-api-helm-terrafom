@@ -65,3 +65,4 @@ Difficult to build higher order functionailty
 managed control plane 
 automated autoscaling repair upgrades 
 consisten cross-cloud cluster management 
+MachinePool autoscaling  groups 

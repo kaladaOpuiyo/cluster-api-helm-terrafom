@@ -1,0 +1,41 @@
+variable "aws_access_key_id" {}
+variable "aws_region" {}
+variable "aws_secrets_access_key" {}
+variable "bootstrap_iam" {}
+variable "clusterawsadm_distro" {}
+variable "clusterawsadm_version" {}
+variable "exp_eks_add_roles" {}
+variable "exp_eks_iam" {}
+variable "exp_eks" {}
+variable "exp_machine_pool" {}
+variable "kubeconfig" {}
+variable "kubeconfig_context" {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
