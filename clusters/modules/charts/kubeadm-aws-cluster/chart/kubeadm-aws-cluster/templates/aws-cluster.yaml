@@ -1,0 +1,11 @@
+apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
+kind: AWSCluster
+metadata:
+  name: {{ .Values.cluster.name }} 
+spec:
+  region: {{ .Values.cluster.region }}
+  sshKeyName: {{ .Values.cluster.sshKeyName }}
+  networkSpec:
+{{ toYaml .Values.network | indent 4 }}
+  bastion:
+    enabled: {{ .Values.cluster.bastionHost }} 

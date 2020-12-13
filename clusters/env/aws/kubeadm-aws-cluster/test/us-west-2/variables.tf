@@ -1,0 +1,11 @@
+variable "bastion_host_enabled" {}
+variable "cluster_name" {}
+variable "control_plane_instance_type" {}
+variable "control_plane_instance_replicas" {}
+variable "ingress_instance_type" {}
+variable "ingress_replicas" {}
+variable "kubernetes_version" {}
+variable "pod_cidr_block" {}
+variable "ssh_key_name" {}
+variable "worker_instance_type" {}
+variable "worker_replicas" {}

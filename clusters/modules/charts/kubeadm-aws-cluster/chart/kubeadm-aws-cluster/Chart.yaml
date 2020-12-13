@@ -1,0 +1,15 @@
+apiVersion: v1
+name: cluster-api 
+description: fun shit 
+keywords:
+- clusterapi 
+- provisioning
+- bootstrapping 
+- kubernetes
+version: 1.0.0
+home: https://cluster-api.sigs.k8s.io/ 
+sources:
+- https://cluster-api.sigs.k8s.io/
+maintainers:
+- name: kalada Opuiyo
+  email: kopuiyo@gmail.com

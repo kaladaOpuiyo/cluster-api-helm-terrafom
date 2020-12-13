@@ -1,0 +1,35 @@
+  cluster:
+    bastionHost: ${bastion_host_enabled}
+    controlPlaneInstanceType: ${control_plane_instance_type} 
+    controlPlaneReplicas: ${control_plane_instance_replicas}  
+    ingressInstanceType: ${ingress_instance_type}
+    ingressReplicas: ${ingress_replicas}
+    kubernetesVersion: ${kubernetes_version}
+    name: ${cluster_name}
+    podCidrBlock: ${pod_cidr_block} 
+    region: ${region}
+    sshKeyName: ${ssh_key_name} 
+    workerInstanceType: ${worker_instance_type}
+    workerReplicas: ${worker_replicas}
+  network:
+    vpc:
+      id: vpc-4bab662f
+      # cidrBlock: 10.0.0.0/16
+    # subnets:
+    # # Public Subnets 
+    # - availabilityZone: us-west-2a
+    #   cidrBlock: 10.0.0.0/20
+    #   isPublic: true
+    # - availabilityZone: us-west-2b
+    #   cidrBlock: 10.0.32.0/20
+    #   isPublic: true
+    # - availabilityZone: us-west-2c
+    #   cidrBlock: 10.0.64.0/20
+    #   isPublic: true
+    # # Private Subnets 
+    # - availabilityZone: us-west-2a
+    #   cidrBlock: 10.0.16.0/20
+    # - availabilityZone: us-west-2b
+    #   cidrBlock: 10.0.48.0/20
+    # - availabilityZone: us-west-2c
+    #   cidrBlock: 10.0.80.0/20

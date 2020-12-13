@@ -1,0 +1,22 @@
+apiVersion: cluster.x-k8s.io/v1alpha3
+kind: MachineDeployment
+metadata:
+  name: "{{ .Values.cluster.name }}-ingress"
+spec:
+  clusterName: {{ .Values.cluster.name }}
+  replicas: {{ .Values.cluster.ingressReplicas }} 
+  selector:
+    matchLabels: null
+  template:
+    spec:
+      bootstrap:
+        configRef:
+          apiVersion: bootstrap.cluster.x-k8s.io/v1alpha3
+          kind: KubeadmConfigTemplate
+          name: "{{ .Values.cluster.name }}-ingress"
+      clusterName: {{ .Values.cluster.name }}
+      infrastructureRef:
+        apiVersion: infrastructure.cluster.x-k8s.io/v1alpha3
+        kind: AWSMachineTemplate
+        name: "{{ .Values.cluster.name }}-ingress"
+      version: {{ .Values.cluster.kubernetesVersion }}
