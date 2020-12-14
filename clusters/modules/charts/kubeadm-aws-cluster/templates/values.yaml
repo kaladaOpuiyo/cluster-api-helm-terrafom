@@ -13,28 +13,4 @@
     workerReplicas: ${worker_replicas}
   network:
     vpc:
-    #   id: vpc-4bab662f
-    # subnets:
-    # - id: subnet-78608e0e
-    # - id: subnet-0e0adf6a
-    # - id: subnet-0fe9d356
-    # - id: subnet-4ef3d966
-      cidrBlock: 10.0.0.0/16
-    # subnets:
-    # # Public Subnets 
-    # - availabilityZone: us-west-2a
-    #   cidrBlock: 10.0.0.0/20
-    #   isPublic: true
-    # - availabilityZone: us-west-2b
-    #   cidrBlock: 10.0.32.0/20
-    #   isPublic: true
-    # - availabilityZone: us-west-2c
-    #   cidrBlock: 10.0.64.0/20
-    #   isPublic: true
-    # # Private Subnets 
-    # - availabilityZone: us-west-2a
-    #   cidrBlock: 10.0.16.0/20
-    # - availabilityZone: us-west-2b
-    #   cidrBlock: 10.0.48.0/20
-    # - availabilityZone: us-west-2c
-    #   cidrBlock: 10.0.80.0/20
+      cidrBlock: ${vpc_cidr_block}

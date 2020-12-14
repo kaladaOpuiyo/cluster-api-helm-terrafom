@@ -1,6 +1,7 @@
 variable "bastion_host_enabled" {
   default = false
 }
+variable "cni_enable" {}
 variable "cluster_name" {}
 variable "control_plane_instance_replicas" {}
 variable "control_plane_instance_type" {}
@@ -12,3 +13,7 @@ variable "region" {}
 variable "ssh_key_name" {}
 variable "worker_instance_type" {}
 variable "worker_replicas" {}
+variable "vpc_cidr_block" {}
+variable "calico_version" {
+  default = "v3.15"
+}

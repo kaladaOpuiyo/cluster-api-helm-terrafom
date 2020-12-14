@@ -15,4 +15,6 @@ module "kubeadm_aws_cluster" {
   worker_instance_type            = var.worker_instance_type
   region                          = data.aws_region.current.name
   worker_replicas                 = var.worker_replicas
+  vpc_cidr_block                  = var.vpc_cidr_block
+  cni_enable                      = var.cni_enable
 }
