@@ -8,9 +8,11 @@ variable "exp_eks_add_roles" {}
 variable "exp_eks_iam" {}
 variable "exp_eks" {}
 variable "exp_machine_pool" {}
-variable "kubeconfig" {}
 variable "kubeconfig_context" {}
-
+variable "kubeconfig" {}
+variable "local_manager_kubeconfig_context" {}
+variable "local_manager_kubeconfig" {}
+variable "move_local_manager" {}
 
 
 

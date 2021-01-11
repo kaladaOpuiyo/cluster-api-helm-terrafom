@@ -8,7 +8,5 @@ clusterawsadm_distro           = "darwin-amd64"
 exp_eks                        = true
 exp_eks_iam                    = true
 exp_eks_add_roles              = true 
-kubeconfig                     = "$HOME/.kube/config"
+kubeconfig                     = "~/.kube/config"
 kubeconfig_context             = "kind-kind"
-# create_kind_cluster             = true
-# destroy_kind_cluster            

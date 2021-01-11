@@ -12,6 +12,9 @@ export EXP_EKS_IAM=${exp_eks_iam}
 export EXP_EKS_ADD_ROLES=${exp_eks_add_roles}
 export KUBECONFIG=${kubeconfig}
 export KUBECONFIG_CONTEXT=${kubeconfig_context}
+export MOVE_LOCAL_MANAGER=${move_local_manager}
+export LOCAL_MANAGER_KUBECONFIG=${local_manager_kubeconfig}
+export LOCAL_MANAGER_KUBECONFIG_CONTEXT=${local_manager_kubeconfig_context}
 
 
 
@@ -38,7 +41,12 @@ export AWS_B64ENCODED_CREDENTIALS=$(clusterawsadm bootstrap credentials encode-a
 
 
 
-# Finally, initialize the management cluster + kubeadm, eks support, dont worry will fail if exist on control cluster
+# Initialize the management cluster + kubeadm, eks support, dont worry will fail if exist on control cluster
 clusterctl init --infrastructure=aws --control-plane aws-eks,kubeadm --bootstrap aws-eks,kubeadm --kubeconfig=$KUBECONFIG --kubeconfig-context=$KUBECONFIG_CONTEXT
 
+# Finally move local manager to newly provisioned cluster.
+if [ $MOVE_LOCAL_MANAGER = true ]
+then 
+    clusterctl move --kubeconfig=$LOCAL_MANAGER_KUBECONFIG --kubeconfig-context=$LOCAL_MANAGER_KUBECONFIG_CONTEXT  --to-kubeconfig=$KUBECONFIG --to-kubeconfig-context=$KUBECONFIG_CONTEXT --namespace=$AWS_REGION
+fi 
 exit

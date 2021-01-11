@@ -17,3 +17,6 @@ variable "vpc_cidr_block" {}
 variable "calico_version" {
   default = "v3.15"
 }
+variable "manager_kubeconfig" {
+
+}

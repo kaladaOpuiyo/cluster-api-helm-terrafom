@@ -1,13 +1,14 @@
   bastion_host_enabled            = true 
-  cluster_name                    = "test-us-west-2-blue"
+  cluster_name                    = "test-us-west-2"
   control_plane_instance_replicas = 1
   control_plane_instance_type     = "t3.large"
   ingress_instance_type           = "t3.micro"
   ingress_replicas                = 0 
-  kubernetes_version              = "v1.19.1"
+  kubernetes_version              = "v1.18.1"
   pod_cidr_block                  = "192.168.0.0/16"
   ssh_key_name                    = "urban-radikal"
   worker_instance_type            = "t3.micro"
   worker_replicas                 = 2
-  vpc_cidr_block                  = "10.0.0.0/16"
+  vpc_cidr_block                  = "15.0.0.0/16" 
+  manager_kubeconfig = "~/.kube/manager-us-west-2.conf"
   cni_enable = true

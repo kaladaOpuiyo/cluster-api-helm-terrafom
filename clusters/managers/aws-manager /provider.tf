@@ -10,7 +10,7 @@ provider "helm" {
   kubernetes {
     # cluser_ca_certificate = base64decode(module.cluster.cluster_ca)
     config_context = "kind-kind"
-    config_path    = "/Users/kalada/.kube/config"
+    config_path    = "~/.kube/config"
     # host                  = module.cluster.cluster_endpoint
     # token                 = data.external.cluster_token.result["token"]
   }

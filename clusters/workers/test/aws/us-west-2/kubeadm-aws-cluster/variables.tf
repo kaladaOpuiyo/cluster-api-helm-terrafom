@@ -11,3 +11,4 @@ variable "ssh_key_name" {}
 variable "worker_instance_type" {}
 variable "worker_replicas" {}
 variable "vpc_cidr_block" {}
+variable "manager_kubeconfig" {}

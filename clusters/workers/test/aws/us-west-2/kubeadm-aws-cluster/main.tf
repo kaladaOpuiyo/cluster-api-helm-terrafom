@@ -17,4 +17,5 @@ module "kubeadm_aws_cluster" {
   worker_replicas                 = var.worker_replicas
   vpc_cidr_block                  = var.vpc_cidr_block
   cni_enable                      = var.cni_enable
+  manager_kubeconfig              = var.manager_kubeconfig
 }

@@ -8,7 +8,8 @@ provider "helm" {
   helm_driver = "secret"
 
   kubernetes {
-    config_context = "kind-kind"
+    config_context = ""
+    config_path    = var.manager_kubeconfig
   }
 
 }

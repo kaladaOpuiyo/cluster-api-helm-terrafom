@@ -1,7 +1,8 @@
 locals {
-  name            = "kubeadm-aws-cluster"
-  calico_manifest = "https://docs.projectcalico.org/${var.calico_version}/manifests/calico.yaml"
-  kubeconfig      = pathexpand("~/.kube/${var.cluster_name}.conf")
+  name               = "kubeadm-aws-cluster"
+  calico_manifest    = "https://docs.projectcalico.org/${var.calico_version}/manifests/calico.yaml"
+  kubeconfig         = pathexpand("~/.kube/${var.cluster_name}.conf")
+  manager_kubeconfig = var.manager_kubeconfig == "self" ? local.kubeconfig : var.manager_kubeconfig
 }
 
 data "template_file" "values" {
@@ -37,7 +38,7 @@ resource "helm_release" "kubeadm_aws_cluster" {
 resource "null_resource" "wait_for_cluster" {
 
   provisioner "local-exec" {
-    command = "while [ \"`kubectl get kubeadmcontrolplane -n ${helm_release.kubeadm_aws_cluster.namespace} ${var.cluster_name}-control-plane  | awk 'NR>1 {print $2}'`\" != \"true\" ]; do sleep 5; echo \"waiting for cluster to create...\"; done"
+    command = "while [ \"`kubectl --kubeconfig=${local.manager_kubeconfig}  get kubeadmcontrolplane -n ${helm_release.kubeadm_aws_cluster.namespace} ${var.cluster_name}-control-plane --  | awk 'NR>1 {print $2}'`\" != \"true\" ]; do sleep 5; echo \"waiting for cluster to finish creating aws resources...\"; done"
 
   }
 }
@@ -49,7 +50,7 @@ resource "null_resource" "kubeconfig" {
     script_sha       = sha256(file("${path.module}/main.tf"))
   }
   provisioner "local-exec" {
-    command = "sleep 30 && kubectl  --namespace=${helm_release.kubeadm_aws_cluster.namespace} get secret ${var.cluster_name}-kubeconfig -o jsonpath={.data.value} | base64 --decode > ${local.kubeconfig}"
+    command = "sleep 30 && kubectl --kubeconfig=${local.manager_kubeconfig}   --namespace=${helm_release.kubeadm_aws_cluster.namespace} get secret ${var.cluster_name}-kubeconfig -o jsonpath={.data.value} | base64 --decode > ${local.kubeconfig}"
 
   }
 

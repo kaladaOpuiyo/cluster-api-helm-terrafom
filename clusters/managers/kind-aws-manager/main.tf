@@ -3,26 +3,29 @@ data "aws_region" "current" {}
 
 
 
-module "aws_init" {
-  source = "../../modules/providers/aws/modules/aws-init"
+module "aws_manager" {
+  source = "../../modules/providers/aws/modules/aws-manager"
 
-  aws_access_key_id      = var.aws_access_key_id
-  aws_region             = var.aws_region
-  aws_secrets_access_key = var.aws_secrets_access_key
-  bootstrap_iam          = false
-  clusterawsadm_distro   = var.clusterawsadm_distro
-  clusterawsadm_version  = var.clusterawsadm_version
-  exp_eks                = var.exp_eks
-  exp_eks_add_roles      = var.exp_eks_add_roles
-  exp_eks_iam            = var.exp_eks_iam
-  exp_machine_pool       = var.exp_machine_pool
-  kubeconfig             = var.kubeconfig
-  kubeconfig_context     = var.kubeconfig_context
+  aws_access_key_id                = var.aws_access_key_id
+  aws_region                       = var.aws_region
+  aws_secrets_access_key           = var.aws_secrets_access_key
+  bootstrap_iam                    = false
+  clusterawsadm_distro             = var.clusterawsadm_distro
+  clusterawsadm_version            = var.clusterawsadm_version
+  exp_eks                          = var.exp_eks
+  exp_eks_add_roles                = var.exp_eks_add_roles
+  exp_eks_iam                      = var.exp_eks_iam
+  exp_machine_pool                 = var.exp_machine_pool
+  kubeconfig                       = var.kubeconfig
+  kubeconfig_context               = var.kubeconfig_context
+  local_manager_kubeconfig         = ""
+  local_manager_kubeconfig_context = ""
+  move_local_manager               = false
 
   depends_on = [null_resource.kind]
 
 }
-# Force use of kinc cluster here.
+# Force use of kind cluster here.
 resource "null_resource" "kind" {
 
   provisioner "local-exec" {
